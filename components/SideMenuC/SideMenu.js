@@ -24,30 +24,30 @@ class SideMenu extends Component {
     const TopNavItems = [
         {
           name: 'Home',
-          avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+          icon: 'home'
         },
         {
           name: 'Notifications',
-          avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+          icon: 'settings'
         },
         {
             name: 'Settings',
-            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            icon: 'settings'
         },
         {
             name: 'Help',
-            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            icon: 'help'
         },
         {
             name: 'About',
-            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+            icon: 'flight-takeoff'
         },
       ]
 
       const BottomNavItems = [
         {
           name: 'Logout',
-          avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+          icon: 'logout'
         },
     ]
     return (
@@ -60,9 +60,10 @@ class SideMenu extends Component {
                 TopNavItems.map((l, i) => (
                 <ListItem
                     key={i}
-                    leftAvatar={{ source: { uri: l.avatar_url } }}
+                    leftIcon={{ name: l.icon }}
                     title={l.name}
                     subtitle={l.subtitle}
+                    chevron
                     // bottomDivider
                 />
                 ))
@@ -73,11 +74,11 @@ class SideMenu extends Component {
             BottomNavItems.map((l, i) => (
                 <ListItem
                     key={i}
-                    leftAvatar={{ source: { uri: l.avatar_url } }}
+                    leftIcon={{ name: l.icon }}
                     title={l.name}
-                    subtitle={l.subtitle}
                     // bottomDivider
                     topDivider
+                    chevron
                 />
                 ))
             }
