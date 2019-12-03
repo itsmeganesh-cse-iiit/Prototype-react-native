@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import {View,Text,Button,Alert} from 'react-native'
+import {View,Text,Button,Alert, Dimensions} from 'react-native'
 import TabMenu from './components/TabMenuC/'
 import BottomNavigation from './components/BottomNavigationC'
 import Calender from './components/CalenderC'
 import CircularProgressBar from './components/CircularProgressC'
 import StackNavigator from './components/StackNavigatorC'
 // import SideDrawer from './components/SideDrawerC'
-import HomeScreen from './screens/HomeScreen'
+import HomeScreen from './components/BottomNavigationC'
+import Dashboard from './components/Profile'
+import ReportsScreen from './components/TabMenuC'
 import SettingsScreen from './screens/SettingsScreen'
 import { createAppContainer, DrawerNavigator } from "react-navigation";
 import {createDrawerNavigator} from 'react-navigation-drawer'
@@ -59,11 +61,21 @@ const AppNav = createDrawerNavigator({
       },
   Settings: {
         screen: SettingsScreen
-      }
+      },
+  Dashboard:{
+      screen: Dashboard
+  },
+  Reports:{
+    screen: ReportsScreen
+  }
+
+  
 }, {
-  contentComponent: SideMenu
+  contentComponent: SideMenu,
+  width: Dimensions.get('window').width * .75,
  
-})
+},
+)
 
 
 export default createAppContainer(AppNav)

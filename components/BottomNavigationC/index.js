@@ -1,12 +1,15 @@
 
 import * as React from 'react';
 import { BottomNavigation, Text } from 'react-native-paper';
+import TabMenu from '../TabMenuC'
+import ProfilePage from '../Profile'
+import Colors from '../../Themes/Colors'
 
 const HomeRoute = () => <Text>Music</Text>;
 
-const ReportsRoute = () => <Text>Albums</Text>;
+const ReportsRoute = () => <TabMenu/>;
 
-const ProfileRoute = () => <Text>Recents</Text>;
+const ProfileRoute = () => <ProfilePage/>;
 
 export default class BottomNavigationC extends React.Component {
   state = {
@@ -32,6 +35,8 @@ export default class BottomNavigationC extends React.Component {
         navigationState={this.state}
         onIndexChange={this._handleIndexChange}
         renderScene={this._renderScene}
+        barStyle={{backgroundColor:Colors.primary}}
+     
       />
     );
   }

@@ -1,35 +1,61 @@
 import * as React from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
-import { TabView, SceneMap } from 'react-native-tab-view';
+import { TabView,TabBar, SceneMap } from 'react-native-tab-view';
+import AppBarHeader from '../AppBarHeaderC'
+import { withNavigation } from 'react-navigation';
+import Calender from '../CalenderC'
+import Colors from '../../Themes/Colors'
 
-const FirstRoute = () => (
-  <View style={[styles.scene, { backgroundColor: '#ff4081' }]} />
+
+const DayRoute = () => (
+  <View style={[styles.scene, { backgroundColor: 'white' }]} />
 );
 
-const SecondRoute = () => (
-  <View style={[styles.scene, { backgroundColor: '#673ab7' }]} />
+const WeekRoute = () => (
+  <View style={[styles.scene, { backgroundColor: 'white' }]} />
 );
 
-export default class TabMenuC extends React.Component {
+const MonthRoute = () => (
+  <View style={[styles.scene, { backgroundColor: 'white' }]} >
+    <Calender/>
+  </View>
+);
+class TabMenuC extends React.Component {
   state = {
     index: 0,
     routes: [
-      { key: 'first', title: 'First' },
-      { key: 'second', title: 'Second' },
+      { key: 'day', title: 'Day' },
+      { key: 'week', title: 'Week' },
+      { key: 'month', title: 'Month' },
     ],
   };
 
   render() {
     return (
+      <>
+      <AppBarHeader title="Reports" />
       <TabView
         navigationState={this.state}
         renderScene={SceneMap({
-          first: FirstRoute,
-          second: SecondRoute,
+          day: DayRoute,
+          week: WeekRoute,
+          month:MonthRoute
         })}
         onIndexChange={index => this.setState({ index })}
         initialLayout={{ width: Dimensions.get('window').width }}
+       
+        renderTabBar={props => (
+          <TabBar
+            {...props}
+            renderLabel={this._renderLabel}
+            getLabelText={({ route: { title } }) => title}
+            indicatorStyle={styles.indicator}
+            tabStyle={styles.tabStyle}
+            style={{backgroundColor:Colors.primary}}
+          />
+        )}
       />
+      </>
     );
   }
 }
@@ -39,3 +65,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+export default withNavigation(TabMenuC)
