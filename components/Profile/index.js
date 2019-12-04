@@ -14,14 +14,14 @@ export class Profile extends Component {
         return (
             <View style={{flex:1}}>
                 
-               <View style={{flex:3,backgroundColor:Colors.primary}}>
-                <View style={{flex:0.3}}></View>
-                <View style={{flex:1}}>
+               <View style={{flex:3,backgroundColor:'white'}}>
+                <View style={{flex:0.3,backgroundColor:Colors.primary}}></View>
+                <View style={{flex:1,backgroundColor:Colors.primary}}>
                     <Appbar.BackAction
                         color="white"
                     />
                 </View>
-                <View style={{flex:1.7,backgroundColor:Colors.primary}}>
+                <View style={{flex:1.7,backgroundColor:Colors.primary, borderBottomRightRadius:100,borderBottomLeftRadius:100}}>
                     <View style={{flex:0.7}}>
                     <Title style={{color:'white',fontWeight:'bold',fontSize:30,marginTop:10,marginLeft:20}}>Atchi Pavani</Title>
 
@@ -33,7 +33,7 @@ export class Profile extends Component {
               
                </View>
                <View style={{flex:0.4}}>
-               <Title style={{marginLeft:20}}>General</Title>
+               <Title style={{marginLeft:20}}>General bannu</Title>
                </View>
                <View style={{flex:4,backgroundColor:'white'}}>
                

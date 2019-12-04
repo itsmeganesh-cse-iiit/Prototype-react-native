@@ -10,10 +10,10 @@ export class CirucularProgressC extends Component {
             <View style={{flex:1,marginTop:20}}>
                 <View style={{flex:4,alignItems:'center'}}>
                 <AnimatedCircularProgress
-                    size={250}
-                    width={35}
-                    fill={80}
-                    tintColor={Colors.primary}
+                    size={this.props.size || 250}
+                    width={this.props.width || 35}
+                    fill={this.props.fill || 80}
+                    tintColor={this.props.color || Colors.primary}
                     // onAnimationComplete={() => console.log('onAnimationComplete')}
                     backgroundColor={"lightgray"}
                     >
@@ -29,7 +29,7 @@ export class CirucularProgressC extends Component {
                         }
                     </AnimatedCircularProgress>
                     </View>
-                    <View style={{flex:0.5,marginLeft:10,backgroundColor:'white',flexDirection:'row',justifyContent:'space-between'}}>
+                    {/* <View style={{flex:0.5,marginLeft:10,backgroundColor:'white',flexDirection:'row',justifyContent:'space-between'}}>
                         <View >
                             <Title style={{color:'gray',fontWeight:'bold'}}>ClockedIn Time    </Title>
                         </View>
@@ -38,8 +38,8 @@ export class CirucularProgressC extends Component {
 
                         </View>
 
-                    </View>
-                    <View style={{flex:0.5,marginLeft:10,backgroundColor:'white',flexDirection:'row',justifyContent:'space-between'}}>
+                    </View> */}
+                    {/* <View style={{flex:0.5,marginLeft:10,backgroundColor:'white',flexDirection:'row',justifyContent:'space-between'}}>
                         <View style={{alignItems:'flex-start'}}>
                             <Title>9 AM</Title>
                         </View>
@@ -47,11 +47,8 @@ export class CirucularProgressC extends Component {
                             <Title>6 PM</Title>
                         </View>
 
-                    </View>
-                    <View style={{flex:5,backgroundColor:'white'}}>
-                        <Text>Pavani</Text>
-
-                    </View>
+                    </View> */}
+     
              </View>
                 )
                         }

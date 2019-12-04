@@ -5,11 +5,14 @@ import { Icon,Badge,Avatar,Button } from 'react-native-elements'
 import { withNavigation } from 'react-navigation';
 import { Title } from 'react-native-paper';
 import GIcon from 'react-native-vector-icons/FontAwesome';
+
+
 export class Dashboard extends Component {
     render() {
         return (
             <View style={{flex:1}}>
-              <View style={{flex:4,backgroundColor:Colors.primary}}>
+              <View style={{flex:4,backgroundColor:Colors.primary,borderBottomLeftRadius:150}}>
+              
                   <View style={{flex:1,flexDirection:'row',justifyContent:'space-between',marginLeft:25,marginTop:25}}>
                       <View>
                           <TouchableOpacity>
@@ -63,7 +66,7 @@ export class Dashboard extends Component {
                       </View>
                 <View style={{flexDirection:'row',justifyContent:'center'}}>
                 <View>
-                <GIcon.Button name="play" backgroundColor="red" borderRadius={15}>
+                <GIcon.Button name="play" backgroundColor="#19A86F" borderRadius={15}>
                     <Text style={{ color:'white',fontFamily: 'Arial', fontSize: 18 }}>
                     Start Shift&nbsp;   &nbsp; 
                     </Text>
@@ -76,7 +79,7 @@ export class Dashboard extends Component {
                                 
                 </View>
         </View>
-              <View style={{flex:6,backgroundColor:'white',zIndex:0}}>
+              <View style={{flex:6,zIndex:0}}>
 
               <View style={{flex:0.4}}>
                     <Title style={{marginLeft:20}}>Today</Title>
