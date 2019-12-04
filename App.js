@@ -63,7 +63,7 @@ const AppNav = createDrawerNavigator({
         screen: SettingsScreen
       },
   Dashboard:{
-      screen: Dashboard
+    screen: Dashboard
   },
   Reports:{
     screen: ReportsScreen
@@ -73,6 +73,7 @@ const AppNav = createDrawerNavigator({
 }, {
   contentComponent: SideMenu,
   width: Dimensions.get('window').width * .75,
+ 
  
 },
 )

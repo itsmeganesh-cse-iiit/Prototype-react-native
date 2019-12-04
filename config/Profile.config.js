@@ -11,17 +11,17 @@ export const generalItems = [
     },
     {
         name: 'Date of Birth',
-        icon: 'info',
+        icon: 'date-range',
         subtitle:'01-01-2001'
       },
       {
         name: 'Company Name',
-        icon: 'info',
+        icon: 'business-center',
         subtitle:'Sphere soft Solutions'
       },
       {
         name: 'Job Role',
-        icon: 'info',
+        icon: 'check-circle',
         subtitle:'Software Engineer'
       },
 ]
@@ -30,5 +30,6 @@ export const otherItems=[
     {
         name: 'LogOut',
         icon: 'info',
+        type: 'font-awesome'
       },
 ]

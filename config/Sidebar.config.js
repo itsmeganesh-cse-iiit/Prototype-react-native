@@ -2,23 +2,31 @@
 export const TopNavItems = [ 
      {
         name: 'Home',
-        icon: 'home'
+        icon: 'home',
+        navscreen:'HomeScreen'
       },
       {
         name: 'Notifications',
-        icon: 'notifications'
+        icon: 'notifications',
+        navscreen:''
+
       },
       {
         name: 'Settings',
-        icon: 'settings'
+        icon: 'settings',
+        navscreen:''
+
       },
       {
         name: 'Help',
-        icon: 'help'
+        icon: 'help',
+        navscreen:''
+
       },
       {
         name: 'About',
-        icon: 'info'
+        icon: 'info',
+        navscreen:''
 
       },
 ];
@@ -26,7 +34,9 @@ export const TopNavItems = [
 export const BottomNavItems=[
       {
         name: 'Logout',
-        icon: 'verified-user'
+        icon: 'sign-out',
+        navscreen:''
+
       },
 
 ]

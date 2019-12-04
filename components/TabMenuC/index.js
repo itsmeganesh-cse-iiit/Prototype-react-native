@@ -5,14 +5,16 @@ import AppBarHeader from '../AppBarHeaderC'
 import { withNavigation } from 'react-navigation';
 import Calender from '../CalenderC'
 import Colors from '../../Themes/Colors'
+import CircularProgressBar from '../CircularProgressC'
 
 
-const DayRoute = () => (
-  <View style={[styles.scene, { backgroundColor: 'white' }]} />
+const DayRoute = () => ( 
+    <CircularProgressBar/>
 );
 
 const WeekRoute = () => (
-  <View style={[styles.scene, { backgroundColor: 'white' }]} />
+  <CircularProgressBar/>
+
 );
 
 const MonthRoute = () => (

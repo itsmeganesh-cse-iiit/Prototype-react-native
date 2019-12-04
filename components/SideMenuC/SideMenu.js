@@ -8,6 +8,7 @@ import { Icon,ListItem } from 'react-native-elements'
 //latest imports
 import { Avatar } from 'react-native-paper';
 import { yellow } from 'ansi-colors';
+import { withNavigation } from 'react-navigation';
 
 import Colors from '../../Themes/Colors'
 
@@ -51,7 +52,7 @@ class SideMenu extends Component {
                     title={item.name}
                     chevron
                     badge={item.name==='Notifications' && { value: 3, textStyle: { color: 'white' }, containerStyle: { marginTop: 0} }}
-
+                    onPress={()=>this.props.navigation.navigate(item.navscreen)}
                 />
                 </TouchableOpacity>
                 ))
@@ -83,4 +84,4 @@ SideMenu.propTypes = {
   navigation: PropTypes.object
 };
 
-export default SideMenu;
+export default withNavigation(SideMenu);

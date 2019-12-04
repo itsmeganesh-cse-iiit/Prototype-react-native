@@ -4,8 +4,9 @@ import { BottomNavigation, Text } from 'react-native-paper';
 import TabMenu from '../TabMenuC'
 import ProfilePage from '../Profile'
 import Colors from '../../Themes/Colors'
+import Dashboard from '../Dashboard'
 
-const HomeRoute = () => <Text>Music</Text>;
+const HomeRoute = () => <Dashboard/>;
 
 const ReportsRoute = () => <TabMenu/>;
 
