@@ -11,6 +11,7 @@ import { yellow } from 'ansi-colors';
 import { withNavigation } from 'react-navigation';
 
 import Colors from '../../Themes/Colors'
+import LinearGradient from 'react-native-linear-gradient';
 
 
 const TopNavItems = require('../../config/Sidebar.config').TopNavItems;
