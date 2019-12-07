@@ -7,11 +7,12 @@ import { Title } from 'react-native-paper';
 import GIcon from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
 import ShimmerPlaceHolder from 'react-native-shimmer-placeholder'
-const ls =require('local-storage')
 import LocalizedStrings from 'react-localization';
 // const stringsList = require( '../../locales/strings')
 import stringsList from '../../locales'
 import NativeBase from '../NativeBase'
+import withLocales from '../Hoc'
+import { compose } from 'recompose'
 import Svg, {
     Circle,
     Ellipse,
@@ -109,15 +110,7 @@ const xml2=`<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x
                             />
                       </View>
                   </View>
-                  {
-                    ls.set('ganesh','bannu')
-                    
-                  }
-                  {
-                    console.warn(ls.get('ganesh'))
-                  }
-
-
+              
                   <View style={{flex:5}}>
                       <View style={{flex:1,alignItems:'center'}}>
                       <ShimmerPlaceHolder autoRun={true}
@@ -182,9 +175,7 @@ const xml2=`<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x
                 </View>
                 <View></View>
               
-                </View>
-                       
-                                
+                </View>        
                 </View>
         </View>
               <View style={{flex:6,zIndex:0}}>
@@ -243,6 +234,9 @@ const xml2=`<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x
                   {strings.how}
                 </Text>
 
+                    {
+                      console.log("Printing prop from HOC",this.props.secretToLife)
+                    }
 
                 <Button title={strings.changeLanguage} onPress={this.changeLang}></Button>
 
@@ -271,4 +265,9 @@ var styles = StyleSheet.create({
     },
   });
 
-export default withNavigation(Dashboard)
+// export default withNavigation(Dashboard)
+
+export default compose(
+  withNavigation,
+  withLocales
+)(Dashboard)
