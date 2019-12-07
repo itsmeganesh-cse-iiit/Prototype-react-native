@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
-import {View,Text, Alert,TouchableOpacity,StyleSheet} from 'react-native'
+import {View,Text, Alert,TouchableOpacity,StyleSheet,Image} from 'react-native'
 import Colors from '../../Themes/Colors'
 import { Icon,Badge,Avatar,Button } from 'react-native-elements'
 import { withNavigation } from 'react-navigation';
 import { Title } from 'react-native-paper';
 import GIcon from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
+import ShimmerPlaceHolder from 'react-native-shimmer-placeholder'
+const ls =require('local-storage')
+import LocalizedStrings from 'react-localization';
+// const stringsList = require( '../../locales/strings')
+import stringsList from '../../locales'
+import NativeBase from '../NativeBase'
 import Svg, {
     Circle,
     Ellipse,
@@ -19,7 +25,7 @@ import Svg, {
     Line,
     Rect,
     Use,
-    Image,
+    // Image,
     Symbol,
     Defs,
     // LinearGradient,
@@ -31,10 +37,29 @@ import Svg, {
     SvgUri,
     SvgXml
   } from 'react-native-svg';
-  
+import { string } from 'prop-types';
+const strings = new LocalizedStrings(stringsList)
 export class Dashboard extends Component {
-    
-    render() {
+  state={
+    imageIsFetched:false,
+  }
+  
+  changeLang=()=>{
+    // Get language
+    console.warn(strings.getLanguage());
+    // console.log(stringsList)
+    // Current Interface language
+    console.warn(strings.getInterfaceLanguage());
+    //Setting Language and force update the component
+    // Need to set language in local storage if present we need to apply that language to user
+    // same for theme and font size also
+    if(strings.getLanguage()==="tel")
+      strings.setLanguage('en')
+    else
+      strings.setLanguage('tel');
+    this.forceUpdate();
+  }
+    render() { 
         const xml = `
   <svg width="32" height="32" viewBox="0 0 32 32">
     <path
@@ -57,6 +82,8 @@ export class Dashboard extends Component {
     </defs>
   </svg>
 `;
+
+
 const xml2=`<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 828.2 827.8" style="enable-background:new 0 0 828.2 827.8;" xml:space="preserve"><path d="M762.2,189.9c-17.4-27.1-38.1-52.2-61.3-74.5c-23.9-22.9-50.8-43.1-79.8-59.8C528.3,2,419.9-13.5,315.9,11.9 c-50.6,12.4-97.8,33.8-140.2,63.6C131.9,106.3,95,144.9,65.9,190.1c-0.1,0.2-0.2,0.3-0.3,0.5c-3.4,5.8-1.4,13,4.4,16.4l308.3,178 c8.4-10.4,21.3-17.1,35.8-17.1c14.4,0,27.2,6.6,35.6,16.9l308.4-178c1.9-1.1,3.4-2.6,4.5-4.4C764.8,198.5,764.7,193.7,762.2,189.9z"/></svg>`
         return (
             <View style={{flex:1}}>
@@ -82,29 +109,61 @@ const xml2=`<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x
                             />
                       </View>
                   </View>
+                  {
+                    ls.set('ganesh','bannu')
+                    
+                  }
+                  {
+                    console.warn(ls.get('ganesh'))
+                  }
 
 
-                  <View style={{flex:3}}>
+                  <View style={{flex:5}}>
                       <View style={{flex:1,alignItems:'center'}}>
-                      <Avatar 
+                      <ShimmerPlaceHolder autoRun={true}
+                  
+                  style={{ width: 200, height: 200, borderRadius: 100 }}
+                  width={200}
+                  height={200}
+                  backgroundColorBehindBorder={'white'}
+
+                  visible={this.state.imageIsFetched}  duration={100000}/>
+
+                      {/* <Avatar 
                             size="xlarge"
                             rounded
                             // icon={{ name: 'account-circle' }}
-                            title="GK"
+                            // title="GK"
                             source={require('../../assets/gani.png')}
                             activeOpacity={0.7}
                             containerStyle={{ marginTop:-60,marginRight: 0}}
+                            onLoad={() => { this.setState({ imageIsFetched: true }) }}
+                            
                             
                         />
-                      </View>
+                         */}
+                         <Image
+                            style={{ width: 200, height: 200, borderRadius: 100 }}
+                            source={require('../../assets/gani.png')}
 
+                            onLoad={() => { 
+                              this.setState({ imageIsFetched: true }) 
+                            
+                            }}
+
+                          />
+
+
+
+                      </View>
+{/* 
                       <View style={{flex:1,marginTop:40,alignItems:'center'}}>
                           
                             <Title style={{fontWeight:'bold',color:'white',fontSize:31}}>Ganesh Koilada</Title>
                             <Text style={{color:'white',fontSize:15}}>Software Engineer</Text>
-                      </View>
+                      </View> */}
 
-                      <View style={{flex:1,alignItems:'flex-end'}}>
+                      <View style={{flex:3,alignItems:'flex-end'}}>
                             <View>
                                 <Title style={{color:'white',fontSize:30,fontWeight:'bold'}}>01:20:30</Title>
                             </View>
@@ -117,7 +176,7 @@ const xml2=`<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x
                 <View>
                 <GIcon.Button name="play" backgroundColor="#19A86F" borderRadius={15}>
                     <Text style={{ color:'white',fontFamily: 'Arial', fontSize: 18 }}>
-                    Start Shift&nbsp;   &nbsp; 
+    {strings.startShift}&nbsp;   &nbsp; 
                     </Text>
                 </GIcon.Button>
                 </View>
@@ -131,7 +190,7 @@ const xml2=`<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x
               <View style={{flex:6,zIndex:0}}>
 
               <View style={{flex:0.4}}>
-                    <Title style={{marginLeft:20}}>Today</Title>
+    <Title style={{marginLeft:20}}>{strings.today}</Title>
                     
                </View>
 
@@ -164,7 +223,7 @@ const xml2=`<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x
                         height="100%"
                         uri="http://thenewcode.com/assets/images/thumbnails/homer-simpson.svg"
                     /> */}
-
+{/* 
                     <Svg height="50%" width="50%" viewBox="0 0 100 100">
                      
                       <Polygon
@@ -173,7 +232,19 @@ const xml2=`<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x
                         stroke="purple"
                         strokeWidth="1"
                       />
-                    </Svg>
+                    </Svg> */}
+
+                  {/* <NativeBase/> */}
+                  <ShimmerPlaceHolder autoRun={true}
+                  backgroundColorBehindBorder="red"
+                  style={{ marginBottom: 7 ,borderRadius:50,height:100,width:100}} />
+                  
+                  <Text style={styles.title}>
+                  {strings.how}
+                </Text>
+
+
+                <Button title={strings.changeLanguage} onPress={this.changeLang}></Button>
 
                </View>
               </View>
