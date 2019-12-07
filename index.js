@@ -11,9 +11,7 @@ import {Text,View} from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage';
 import AppIntro from './components/Intro'
 // React Native Localization
-import LocalizedStrings from 'react-localization';
-import stringsList from './locales'
-const strings = new LocalizedStrings(stringsList);
+
 
 export class Main extends React.Component {
   constructor(props) {
@@ -31,8 +29,8 @@ export class Main extends React.Component {
   switchScreens=()=>{
  
     if(true) {
-      
-      return <App strings={strings} />;
+
+      return <App />;
     }
     else {
       return <AppIntro changeHandler={this.changeHandler}/>

@@ -235,7 +235,7 @@ const xml2=`<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x
                 </Text>
 
                     {
-                      console.log("Printing prop from HOC",this.props.secretToLife)
+                      console.log("Printing prop from HOC",this.props.strings)
                     }
 
                 <Button title={strings.changeLanguage} onPress={this.changeLang}></Button>
