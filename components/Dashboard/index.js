@@ -13,6 +13,8 @@ import stringsList from '../../locales'
 import NativeBase from '../NativeBase'
 import withLocales from '../Hoc'
 import { compose } from 'recompose'
+// React native restart
+import RNRestart from 'react-native-restart';
 import Svg, {
     Circle,
     Ellipse,
@@ -58,6 +60,7 @@ export class Dashboard extends Component {
       strings.setLanguage('en')
     else
       strings.setLanguage('tel');
+      RNRestart.Restart();
     this.forceUpdate();
   }
     render() { 

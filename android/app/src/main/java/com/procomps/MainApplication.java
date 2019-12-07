@@ -17,6 +17,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.babisoft.ReactNativeLocalization.ReactNativeLocalizationPackage; // <--- import 
+import com.avishayil.rnrestart.ReactNativeRestartPackage; 
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -36,6 +37,7 @@ public class MainApplication extends Application implements ReactApplication {
           packages.add(new LinearGradientPackage());
           // packages.add(new ReactNativeLocalizationPackage());
           // packages.add(new SvgPackage());
+          // packages.add(new ReactNativeRestartPackage());
           return packages;
         }
 
