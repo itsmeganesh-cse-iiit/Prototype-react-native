@@ -5,22 +5,31 @@ import TabMenu from '../TabMenuC'
 import ProfilePage from '../Profile'
 import Colors from '../../Themes/Colors'
 import Dashboard from '../Dashboard'
-
+import { compose } from 'recompose'
+import withLocales from '../Hoc'
 const HomeRoute = () => <Dashboard/>;
 
 const ReportsRoute = () => <TabMenu/>;
 
 const ProfileRoute = () => <ProfilePage/>;
 
-export default class BottomNavigationC extends React.Component {
-  state = {
+ class BottomNavigationC extends React.Component {
+  
+ constructor(props) {
+   super(props)
+  
+   const {strings} = this.props
+   this.state = {
     index: 0,
     routes: [
-      { key: 'home', title: 'Home', icon: 'home' },
-      { key: 'reports', title: 'Reports', icon: 'chart-areaspline' },
-      { key: 'profile', title: 'Profile', icon: 'account-circle' },
+      { key: 'home', title:strings.bottomNavBar.Home, icon: 'home' },
+      { key: 'reports', title:strings.bottomNavBar.Reports, icon: 'chart-areaspline' },
+      { key: 'profile', title:strings.bottomNavBar.Profile, icon: 'account-circle' },
     ],
-  };
+   }
+ }
+ 
+
 
   _handleIndexChange = index => this.setState({ index });
 
@@ -31,6 +40,7 @@ export default class BottomNavigationC extends React.Component {
   });
 
   render() {
+    
     return (
       <BottomNavigation
         navigationState={this.state}
@@ -42,3 +52,7 @@ export default class BottomNavigationC extends React.Component {
     );
   }
 }
+
+export default compose(
+  withLocales
+)(BottomNavigationC)

@@ -47,10 +47,10 @@ export class Dashboard extends Component {
   
   changeLang=()=>{
     // Get language
-    console.warn(strings.getLanguage());
+    // console.warn(strings.getLanguage());
     // console.log(stringsList)
     // Current Interface language
-    console.warn(strings.getInterfaceLanguage());
+    // console.warn(strings.getInterfaceLanguage());
     //Setting Language and force update the component
     // Need to set language in local storage if present we need to apply that language to user
     // same for theme and font size also
