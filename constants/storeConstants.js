@@ -1,1 +1,2 @@
 export const APPLANGUAGE='APPLANGUAGE'
+export const APPINTRO="APPINTRO"

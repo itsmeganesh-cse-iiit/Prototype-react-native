@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {View,Text, Alert,TouchableOpacity,StyleSheet,Image} from 'react-native'
 import Colors from '../../Themes/Colors'
-import { Icon,Badge,Avatar,Button } from 'react-native-elements'
+import { Icon,Badge,Avatar,Button} from 'react-native-elements'
 import { withNavigation } from 'react-navigation';
 import { Title } from 'react-native-paper';
 import GIcon from 'react-native-vector-icons/FontAwesome';
@@ -12,7 +12,7 @@ import LocalizedStrings from 'react-localization';
 import NativeBase from '../NativeBase'
 import withLocales from '../Hoc'
 import { compose } from 'recompose'
-import {setItem,getItem} from '../store'
+import {setItem,getItem} from '../../store'
 import {APPLANGUAGE} from '../../constants/storeConstants'
 // React native restart
 import RNRestart from 'react-native-restart';

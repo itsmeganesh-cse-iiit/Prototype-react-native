@@ -8,7 +8,9 @@ import {Alert} from 'react-native'
 import Dashboard from '../Dashboard'
 import { compose } from 'recompose'
 import withLocales from '../Hoc'
-import {setItem,getItem} from '../store'
+import {setItem,getItem} from '../../store'
+import {APPLANGUAGE} from '../../constants/storeConstants'
+
 const HomeRoute = () => <Dashboard/>;
 
 const ReportsRoute = () => <TabMenu/>;
@@ -42,12 +44,9 @@ const ProfileRoute = () => <ProfilePage/>;
     profile: ProfileRoute,
   });
 
-  componentDidUpdate(prevProps) {
-    console.warn('Rerendered')
-  }
   componentDidMount(){
     // Setting the app language
-    getItem('appLanguage').then(lang=>{
+    getItem(APPLANGUAGE).then(lang=>{
       this.props.strings.setLanguage(lang);
       const {strings} = this.props
       this.setState({
@@ -61,7 +60,7 @@ const ProfileRoute = () => <ProfilePage/>;
   }
 
   componentDidUpdate(prevProps){
-      console.warn("Did Update Called")
+        // console.warn("Did Update Called")
   }
   render() {
 

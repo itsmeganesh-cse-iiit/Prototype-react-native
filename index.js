@@ -7,11 +7,13 @@ import { AppRegistry } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import App from './App';
 import {name as appName} from './app.json';
-import {Text,View} from 'react-native'
+import {Text,View,Alert} from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage';
 import AppIntro from './components/Intro'
-// React Native Localization
 
+// Getting App intro constants and store methods
+import {APPINTRO} from './constants/storeConstants'
+import {getItem} from './store'
 
 export class Main extends React.Component {
   constructor(props) {
@@ -19,6 +21,8 @@ export class Main extends React.Component {
   
     this.state = {
        showMainApp:false,
+       storeVal:null,
+       appLoading:true,
     }
   }
 
@@ -26,14 +30,22 @@ export class Main extends React.Component {
     this.setState({showMainApp:true})
   }
   
-  switchScreens=()=>{
- 
-    if(true) {
 
+  componentDidMount(){
+    getItem(APPINTRO).then(intro=>{
+      this.setState({storeVal:intro,appLoading:false})
+    })
+  }
+  switchScreens=()=>{
+    const {storeVal,appLoading} = this.state
+    if(storeVal) {
       return <App />;
     }
-    else {
+    else if(!storeVal && !appLoading) {
       return <AppIntro changeHandler={this.changeHandler}/>
+    }
+    else {
+      return <Text style={{marginTop:300,fontSize:30,marginLeft:160,color:'green'}}>App Loading</Text>
     }
   }
   render() {
