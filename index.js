@@ -13,8 +13,8 @@ import AppIntro from './components/Intro'
 
 // Getting App intro constants and store methods
 import {APPINTRO} from './constants/storeConstants'
+// import {getItemService} from './services/storeServices'
 import {getItem} from './store'
-
 export class Main extends React.Component {
   constructor(props) {
     super(props)
@@ -35,6 +35,8 @@ export class Main extends React.Component {
     getItem(APPINTRO).then(intro=>{
       this.setState({storeVal:intro,appLoading:false})
     })
+    // let intro =getItemService(APPINTRO)
+    // this.setState({storeVal:intro,appLoading:false})
   }
   switchScreens=()=>{
     const {storeVal,appLoading} = this.state
