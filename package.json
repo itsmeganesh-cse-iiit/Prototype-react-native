@@ -30,6 +30,7 @@
     "react-native-screens": "^1.0.0-alpha.23",
     "react-native-shimmer-placeholder": "^1.0.35",
     "react-native-splash-screen": "^3.2.0",
+    "react-native-storage": "^1.0.1",
     "react-native-svg": "^9.13.3",
     "react-native-tab-view": "^2.11.0",
     "react-native-typography": "^1.4.1",

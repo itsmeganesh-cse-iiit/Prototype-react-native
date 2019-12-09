@@ -34,7 +34,7 @@ export const TopNavItems = [
 export const BottomNavItems=[
       {
         name: 'Logout',
-        icon: 'sign-out',
+        icon: 'info',
         navscreen:''
 
       },

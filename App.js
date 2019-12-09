@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {View,Text,Button,Alert, Dimensions} from 'react-native'
 import TabMenu from './components/TabMenuC/'
-import BottomNavigation from './components/BottomNavigationC'
 import Calender from './components/CalenderC'
 import CircularProgressBar from './components/CircularProgressC'
 import StackNavigator from './components/StackNavigatorC'

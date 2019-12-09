@@ -4,12 +4,15 @@ import LocalizedStrings from 'react-localization';
 import stringsList from '../../locales'
 const strings = new LocalizedStrings(stringsList);
 
-const withLocales = (WrappedComponent) => {
+//! HOC wrapper to add strings to components
+
+export default  withLocales = (WrappedComponent) => {
   class HOC extends React.Component {
     render() {
       return (
         <WrappedComponent
         strings={strings}
+        changeState={this.changeState}
           {...this.props}
         />
       );
@@ -19,4 +22,3 @@ const withLocales = (WrappedComponent) => {
   return HOC;
 };
 
-export default withLocales;

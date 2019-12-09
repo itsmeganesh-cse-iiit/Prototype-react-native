@@ -9,10 +9,11 @@ import LinearGradient from 'react-native-linear-gradient';
 import ShimmerPlaceHolder from 'react-native-shimmer-placeholder'
 import LocalizedStrings from 'react-localization';
 // const stringsList = require( '../../locales/strings')
-import stringsList from '../../locales'
 import NativeBase from '../NativeBase'
 import withLocales from '../Hoc'
 import { compose } from 'recompose'
+import {setItem,getItem} from '../store'
+import {APPLANGUAGE} from '../../constants/storeConstants'
 // React native restart
 import RNRestart from 'react-native-restart';
 import Svg, {
@@ -40,12 +41,35 @@ import Svg, {
     SvgUri,
     SvgXml
   } from 'react-native-svg';
-import { string } from 'prop-types';
-const strings = new LocalizedStrings(stringsList)
+
 export class Dashboard extends Component {
-  state={
-    imageIsFetched:false,
+  constructor(props) {
+    super(props)
+   
+    this.state = {
+      imageIsFetched:false,
+
+    }
   }
+  
+
+   componentDidMount(){
+    // Setting the app language
+    getItem(APPLANGUAGE).then(lang=>{
+      this.props.strings.setLanguage(lang);
+
+    })
+  }
+
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    // if (this.props.userID !== prevProps.userID) {
+    //   this.fetchData(this.props.userID);
+    // }
+  
+  }
+
+
   
   changeLang=()=>{
     // Get language
@@ -56,14 +80,20 @@ export class Dashboard extends Component {
     //Setting Language and force update the component
     // Need to set language in local storage if present we need to apply that language to user
     // same for theme and font size also
+    let lang=''
+    const {strings} = this.props
     if(strings.getLanguage()==="tel")
-      strings.setLanguage('en')
+      lang="en"
     else
-      strings.setLanguage('tel');
-      RNRestart.Restart();
+      lang="tel"
+      // RNRestart.Restart();
+    strings.setLanguage(lang);
+    setItem(APPLANGUAGE,lang)
+    
     this.forceUpdate();
   }
     render() { 
+      const {strings} = this.props
         const xml = `
   <svg width="32" height="32" viewBox="0 0 32 32">
     <path
@@ -148,7 +178,6 @@ const xml2=`<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x
                             }}
 
                           />
-
 
 
                       </View>
@@ -237,9 +266,9 @@ const xml2=`<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x
                   {strings.how}
                 </Text>
 
-                    {
+                    {/* {
                       console.log("Printing prop from HOC",this.props.strings)
-                    }
+                    } */}
 
                 <Button title={strings.changeLanguage} onPress={this.changeLang}></Button>
 

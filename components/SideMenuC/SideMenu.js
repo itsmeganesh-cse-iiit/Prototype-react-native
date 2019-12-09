@@ -52,7 +52,7 @@ class SideMenu extends Component {
                     leftIcon={{ name: item.icon }}
                     title={item.name}
                     chevron
-                    badge={item.name==='Notifications' && { value: 3, textStyle: { color: 'white' }, containerStyle: { marginTop: 0} }}
+                    // badge={item.name==='Notifications' && { value: 3, textStyle: { color: 'white' }, containerStyle: { marginTop: 0} }}
                     onPress={()=>this.props.navigation.navigate(item.navscreen)}
                 />
                 </TouchableOpacity>
