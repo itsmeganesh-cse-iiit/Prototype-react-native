@@ -7,6 +7,7 @@ export class CalenderC extends Component {
             <View>
                <Calendar
                     // Initially visible month. Default = Date()
+               
                     current={'2012-03-01'} /> 
             </View>
         )

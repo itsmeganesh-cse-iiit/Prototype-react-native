@@ -18,6 +18,7 @@ import java.util.List;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.babisoft.ReactNativeLocalization.ReactNativeLocalizationPackage; // <--- import 
 import com.avishayil.rnrestart.ReactNativeRestartPackage; 
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -38,6 +39,7 @@ public class MainApplication extends Application implements ReactApplication {
           // packages.add(new ReactNativeLocalizationPackage());
           // packages.add(new SvgPackage());
           // packages.add(new ReactNativeRestartPackage());
+          // packages.add(new SplashScreenReactPackage());
           return packages;
         }
 

@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 export const setItem = async(key,val) => {
     try {
         await AsyncStorage.setItem(key,val)  
+        Alert.alert('Value set')
       } catch (e) {
         Alert.alert("OPPS... App not working properly .")
       }
@@ -14,6 +15,7 @@ export const getItem = async(val) => {
     let locale=null
     try {
         locale = await AsyncStorage.getItem(val)
+        Alert.alert('Value retrieved')
       } catch (e) {
         Alert.alert("OPPS... App not working properly .")
       }

@@ -15,6 +15,9 @@ import AppIntro from './components/Intro'
 import {APPINTRO} from './constants/storeConstants'
 // import {getItemService} from './services/storeServices'
 import {getItem} from './store'
+
+import SplashScreen from 'react-native-splash-screen'
+
 export class Main extends React.Component {
   constructor(props) {
     super(props)
@@ -32,22 +35,28 @@ export class Main extends React.Component {
   
 
   componentDidMount(){
+   
     getItem(APPINTRO).then(intro=>{
-      this.setState({storeVal:intro,appLoading:false})
+      this.setState({storeVal:intro,appLoading:false},()=>{
+      })
+   
     })
+    SplashScreen.hide();
     // let intro =getItemService(APPINTRO)
     // this.setState({storeVal:intro,appLoading:false})
+   
   }
   switchScreens=()=>{
     const {storeVal,appLoading} = this.state
     if(storeVal) {
       return <App />;
     }
-    else if(!storeVal && !appLoading) {
+    else if(!storeVal) {
       return <AppIntro changeHandler={this.changeHandler}/>
     }
     else {
       return <Text style={{marginTop:300,fontSize:30,marginLeft:160,color:'green'}}>App Loading</Text>
+      
     }
   }
   render() {
